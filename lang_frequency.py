@@ -1,8 +1,6 @@
 from string import punctuation
 from collections import Counter
-import operator
 import argparse
-import sys
 
 
 def load_data(filepath):
@@ -17,7 +15,7 @@ def create_parser():
 
 
 def get_most_frequent_words(text):
-    clear_text = "".join(ch for ch in text if ch not in punctuation)
+    clear_text = "".join(ch for ch in text.lower() if ch not in punctuation)
     words_counter = Counter()
     for word in clear_text.split():
         words_counter[word] += 1
@@ -31,4 +29,4 @@ if __name__ == '__main__':
     data = load_data(params.name)
     print('Most frequent words in text: ')
     for word in get_most_frequent_words(data):
-        print(word)        
+        print(word)
